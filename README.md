@@ -37,3 +37,40 @@
 **KullaniciEkrani.cs:**
   Kullanıcı giriş yaptıktan sonra buraya yani alışverişi yapacağı forma geliyor. Alttaki DataGridView de ürünler bulunuyor buradaki herhangi bir hücreye bastığında sol üst köşedeki picturebox’a ürünün fotoğrafı geliyor. Kullanıcı beğendiyse ‘sepete yükle’ tuşuna basarak ürünü sepete yani richtextbox’a yüklüyor. En fazla stok sayısı kadar olmak şartıyla istediği kadar aynı ürünü yükleyebilir. Eğer kullanıcı ürünleri almak istemezse ‘sepeti boşalt’ adlı tuşa basıp richtextbox’ı temizleyebilir. Eğer kullanıcı ürünleri almak isterse ‘alışverişi tamamla’ adlı tuşa basıp ürünleri alabilir. Bu tuşa bastıktan sonra aldığı ürünlerin stok sayısında aldığı miktar kadar bir azalma oluyor ve bu azalma DataGridView’e yansıyor. 
 ![Ekran görüntüsü 2024-12-20 001538](https://github.com/user-attachments/assets/7dbca3c3-7706-409c-89c8-7c6e5042d7db)
+
+# GEREKLİ SQL KODLARI
+--veritabanı oluşturuyoruz
+create database gorselProg
+use gorselProg
+--kullanacağımız tabloları oluşturuyoruz
+create table urunlerTablosu(
+urun_id int primary key identity(1,1),
+renk varchar(50),
+kategori varchar(50),
+marka varchar(50),
+fiyat int,
+stok int,
+resim nvarchar(MAX)
+);
+create table kullaniciTablosu(
+kullanici_id int primary key identity(1,1),
+isim varchar(50),
+soyisim varchar(50),
+sehir varchar(50),
+email varchar(50),
+sifre int,
+);
+create table yoneticiTablo(
+yonetici_id int primary key identity(1,1),
+isim varchar(50),
+soyisim varchar(50),
+email varchar(50),
+sifre int,
+);
+insert into yoneticiTablo(isim ,soyisim,email,sifre)
+values('emine','gunes','emine@gmail.com',1234);
+insert into yoneticiTablo(isim ,soyisim,email,sifre)
+values('agah','agah','agah@gmail.com',1221);
+
+insert into kullaniciTablosu(isim,soyisim,sehir,email,sifre)
+values('agah','agah','istanbul','agah@gmail.com',1234);
